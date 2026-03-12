@@ -1,6 +1,5 @@
 open Lambda_calculus_interpreter.Ast
 open Lambda_calculus_interpreter.Eval
-open Lambda_calculus_interpreter.Parse
 
 let () =
   let _fact =
@@ -17,6 +16,6 @@ let () =
       Application (Variable "fib", Constant 5)
     )
   in
-  match eval_cps (parse "fun x -> 5" |> Option.get) [] (fun x -> x) with
+  match eval_cps _fact [] (fun x -> x) with
   | Int x -> Printf.printf "%d\n" x
   | _ -> failwith "could not reach a constant value"
