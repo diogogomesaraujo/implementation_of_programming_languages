@@ -1,0 +1,7 @@
+let fib =
+    fix (
+        \g -> \x ->
+            ifzero (x - 1) 1
+                (ifzero x 1 ((g (x - 1)) + (g (x - 2))))
+    )
+in fib 10

@@ -9,19 +9,14 @@
 %token IN
 %token LET
 %token IFZERO
-
 %token FIX
-
 %token LPAR
 %token RPAR
-
 %token SUM
 %token SUB
 %token MUL
-
 %token FUN
 %token ARROW
-
 %token EOF
 
 %start <Ast.term> prog
@@ -38,13 +33,13 @@ atomic:
   ;
 
 sum:
-  | e1 = sum; SUM; e2 = prod { Addition (e1, e2) }
-  | e1 = sum; SUB; e2 = prod { Subtraction (e1, e2) }
-  | p = prod { p }
+  | e1 = sum; SUM; e2 = mul { Addition (e1, e2) }
+  | e1 = sum; SUB; e2 = mul { Subtraction (e1, e2) }
+  | m = mul { m }
   ;
 
-prod:
-  | e1 = prod; MUL; e2 = atomic { Multiplication (e1, e2) }
+mul:
+  | e1 = mul; MUL; e2 = atomic { Multiplication (e1, e2) }
   | a = app { a }
 
 app:
