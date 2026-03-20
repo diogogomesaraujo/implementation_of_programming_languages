@@ -29,7 +29,7 @@ let fact =
 in fact 5
 ```
 
-2. Fibonnaci
+2. Fibonnaci Sequence
 
 ```
 let fib =
@@ -39,5 +39,18 @@ let fib =
                 (ifzero x 1 ((g (x - 1)) + (g (x - 2))))
     )
 in fib 10
+```
+3. Catalan Numbers
+```
+let fact =
+    fix (
+        \g -> \x ->
+            ifzero x 1 (x * g (x - 1))
+    )
+in let catalan =
+    \x ->
+        fact (2 * x) /
+        (fact (x + 1) * fact x)
+in catalan 10
 ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
