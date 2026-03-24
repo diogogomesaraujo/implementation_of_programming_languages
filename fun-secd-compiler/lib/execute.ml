@@ -1,5 +1,7 @@
 open Types
 
+(** [execute c] is the SECD virtual machine that evaluates a configuration [c]
+based on the first instruction from the code.*)
 let execute c =
   match c with
   | (s, e, (LD i)::c, d, m) ->
@@ -55,6 +57,7 @@ let execute c =
 
   | _ -> failwith "runtime error"
 
+(** [execute_t c] evaluates the configuration [c] recursivly until the code and the stack are empty.*)
 let rec execute_t c =
   match execute c with
   | (v::[], _, [], _, _) -> v

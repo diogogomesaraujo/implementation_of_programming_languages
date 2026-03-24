@@ -1,7 +1,11 @@
+(** Module that compiles the extended λ-Calculus to SECD-machine instructions.*)
+
 open Ast
 open Types
 open Lookup
 
+(** [compile e sym] compiles a term recursively into SECD-machine code.
+It receives a term [e], as well as a symbol table [sym] that stores variable names at compile time.*)
 let rec compile e sym =
   match e with
   | Constant n -> [LDC n]

@@ -1,11 +1,9 @@
 open Ast
 
 type env = value list
-
 and value =
   | Int of int
   | Address of addr
-
 and instr =
   | HALT
   | LDC of int
@@ -22,13 +20,9 @@ and instr =
   | AA
   | LDRF
   | RTN
-
 and code = instr list
-
 and closure = code * env
-
 and addr = int
-
 and stack = value list
 
 module Addr = struct
@@ -43,9 +37,6 @@ let add k v m = StoreMap.add k v m
 let get k m = StoreMap.find k m
 
 type store = closure StoreMap.t
-
 and dump = (stack * env * code) list
-
 and sym = identity list
-
 and conf = stack * env * code * dump * store

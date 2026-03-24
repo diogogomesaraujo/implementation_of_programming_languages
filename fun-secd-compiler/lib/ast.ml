@@ -1,6 +1,10 @@
+(** Module that implements the types that define the exetended λ-Calculus.*)
+
+(** Type that represents a variable name.*)
 type identity = string
   [@@deriving show]
 
+(** Type that represents a term recognized by the compiler.*)
 type term =
   | Variable of identity
   | Lambda of identity * term
