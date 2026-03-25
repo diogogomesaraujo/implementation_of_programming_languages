@@ -1,0 +1,3 @@
+    let incr =
+        \x -> x + 1
+    in incr 1
