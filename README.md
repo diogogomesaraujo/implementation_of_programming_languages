@@ -2,7 +2,7 @@
 <div align="center">
   <h3 align="center">fun</h3>
   <p align="center">
-      A simple functional programming language implemented in OCaml.
+      A core functional programming language implemented in OCaml.
   </p>
 </div>
 
