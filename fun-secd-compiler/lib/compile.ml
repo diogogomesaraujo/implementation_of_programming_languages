@@ -1,7 +1,7 @@
 (** Module that compiles the extended λ-Calculus to SECD-machine instructions.*)
 
 open Ast
-open Types
+open Secd
 open Lookup
 
 (** [compile e sym] compiles a term recursively into SECD-machine code.
