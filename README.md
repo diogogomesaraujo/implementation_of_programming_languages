@@ -18,8 +18,8 @@ This repository contains interpreters and compilers for a simple functional prog
 
 ## Main Modules
 
-- [`fun-secd-compiler`](./fun-secd-compiler) -> `fun` to SECD-machine instructions
-- `fun-ski-compiler` -> `fun` to SK-combinators 
+- [`fun-secd-compiler`](./fun-secd-compiler): `fun` to SECD-machine instructions
+- [`fun-ski-compiler`](./fun-ski-compiler): `fun` to SK-combinators 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
