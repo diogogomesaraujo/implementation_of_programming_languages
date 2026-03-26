@@ -13,7 +13,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About
 
-This repository contains a compiler from an extended call-by-value λ-Calculus to SECD-machine instructions.
+This repository contains a compiler from an extended call-by-value λ-Calculus to SECD-machine instructions and a stack machine that runs the compiled code. To learn more about the implementation read the [report](./report.pdf).
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Getting Started
@@ -22,21 +22,16 @@ This repository contains a compiler from an extended call-by-value λ-Calculus t
 
 In order to run this project from source, you will need to have OCaml, `dune`, and `opam` installed. To install them you can follow the [OCaml Documentation](https://ocaml.org/install#linux_mac_bsd).
 
-### Runnable Examples
+### Command-line Tool
 
-There are several code implementations in the `examples` directory you can run by changing the path in the `main.ml` executable.
-
-```OCaml
-let () =
-  let e = parse_from_file "examples/catalan.fn" |> Option.get in
-  match compile e [] |> run with
-  | Int x -> Printf.printf "%d\n" x
-  | _ -> failwith "Couldn't reach an integer value."
+You can execute programs written in files with the following command:
+```bash
+dune exec fun -- <file_path>
 ```
 
-To run execute the following command:
+Or use the interactive environment with:
 ```bash
-dune exec fun
+dune exec fun -- --repl
 ```
 
 ### Documentation
@@ -57,9 +52,17 @@ open _build/default/_doc/_html/index.html
 
 ## Code Examples
 
-1. Factorial
+There are several examples you can try in the [`examples`](./examples) folder such as:
 
+1. Increment
+```haskell
+let incr =
+  \x -> x + 1
+in incr 1
 ```
+2. Factorial
+
+```haskell
 let fact =
     fix (
         \g -> \x ->
@@ -68,9 +71,9 @@ let fact =
 in fact 5
 ```
 
-2. Fibonnaci Sequence
+3. Fibonnaci Sequence
 
-```
+```haskell
 let fib =
     fix (
         \g -> \x ->
@@ -79,8 +82,8 @@ let fib =
     )
 in fib 10
 ```
-3. Catalan Numbers
-```
+4. Catalan Numbers
+```haskell
 let fact =
     fix (
         \g -> \x ->
