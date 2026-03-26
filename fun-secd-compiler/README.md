@@ -24,7 +24,7 @@ In order to run this project from source, you will need to have OCaml, `dune`, a
 
 ### Runnable Examples
 
-There are several code implementations in the `examples directory` you can run by changing the path in the `main.ml` executable.
+There are several code implementations in the `examples` directory you can run by changing the path in the `main.ml` executable.
 
 ```OCaml
 let () =
