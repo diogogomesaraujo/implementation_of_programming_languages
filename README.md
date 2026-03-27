@@ -14,12 +14,6 @@
 ## About
 
 This repository contains interpreters and compilers for a simple functional programming language called `fun` for Implementation of Programming Languages class of my Master's degree at FCUP.
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## Main Modules
-
-- [`fun-secd-compiler`](./fun-secd-compiler) -> `fun` to SECD-machine instructions
-- `fun-ski-compiler` -> `fun` to SK-combinators 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

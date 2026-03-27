@@ -1,9 +1,0 @@
-(menhir (modules parser))
-(ocamllex lexer)
-
-(library
- (name fun)
- (public_name fun)
- (preprocess (pps ppx_deriving.show))
- (libraries terminal_size)
-)
