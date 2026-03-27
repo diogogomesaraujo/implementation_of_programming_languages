@@ -6,10 +6,6 @@
   </p>
 </div>
 
-<div align="center">
-    <img src="./assets/cam.gif" alt="Demo">
-</div>
-
 <!-- ABOUT THE PROJECT -->
 ## About
 
