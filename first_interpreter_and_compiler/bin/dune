@@ -1,4 +1,0 @@
-(executable
- (public_name simple_interpreter_and_compiler)
- (name main)
- (libraries simple_interpreter_and_compiler))

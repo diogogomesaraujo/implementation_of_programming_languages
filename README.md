@@ -13,21 +13,56 @@
 <!-- ABOUT THE PROJECT -->
 ## About
 
-This repository contains interpreters and compilers for a simple functional programming language called `fun` for Implementation of Programming Languages class of my Master's degree at FCUP.
+This repository contains a compiler from an extended call-by-value λ-Calculus to SECD-machine instructions and a stack machine that runs the compiled code. To learn more about the implementation read the [report](./report.pdf).
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Main Modules
+## Getting Started
 
-- [`fun-secd-compiler`](./fun-secd-compiler): `fun` to SECD-machine instructions
-- [`fun-ski-compiler`](./fun-ski-compiler): `fun` to SK-combinators 
+### Prerequisites
+
+In order to run this project from source, you will need to have OCaml, `dune`, and `opam` installed. To install them you can follow the [OCaml Documentation](https://ocaml.org/install#linux_mac_bsd).
+
+### Command-line Tool
+
+You can execute programs written in files with the following command:
+```bash
+dune exec fun -- <file_path>
+```
+
+Or use the interactive environment with:
+```bash
+dune exec fun -- --repl
+```
+
+### Documentation
+
+1. To compile the documentation run:
+
+```bash
+dune build @doc
+```
+
+2. Then open the documentation with:
+
+```bash
+open _build/default/_doc/_html/index.html 
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Code Examples
 
-1. Factorial
+There are several examples you can try in the [`examples`](./examples) folder such as:
 
+1. Increment
+```haskell
+let incr =
+  \x -> x + 1
+in incr 1
 ```
+2. Factorial
+
+```haskell
 let fact =
     fix (
         \g -> \x ->
@@ -36,9 +71,9 @@ let fact =
 in fact 5
 ```
 
-2. Fibonnaci Sequence
+3. Fibonnaci Sequence
 
-```
+```haskell
 let fib =
     fix (
         \g -> \x ->
@@ -47,8 +82,8 @@ let fib =
     )
 in fib 10
 ```
-3. Catalan Numbers
-```
+4. Catalan Numbers
+```haskell
 let fact =
     fix (
         \g -> \x ->
