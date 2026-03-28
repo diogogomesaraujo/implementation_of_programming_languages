@@ -30,6 +30,11 @@ Or use the interactive environment with:
 dune exec fun -- --repl
 ```
 
+And finally you can use the flag `--trace` to view all the intermediate steps of execution:
+```bash
+dune exec fun -- (<file_path> | --repl) --trace
+```
+
 ### Documentation
 
 1. To compile the documentation run:
@@ -56,6 +61,7 @@ let incr =
   \x -> x + 1
 in incr 1
 ```
+
 2. Factorial
 
 ```haskell
@@ -78,7 +84,19 @@ let fib =
     )
 in fib 10
 ```
-4. Catalan Numbers
+
+4. Tribonnaci Sequence
+```haskell
+let trib =
+    fix (
+        \g -> \x ->
+            ifzero x 0
+                (ifzero (x - 1) 1
+                    (ifzero (x - 2) 1 (g (x - 1) + g (x - 2) + g (x - 3)))))
+in trib 1
+```
+
+5. Catalan Numbers
 ```haskell
 let fact =
     fix (
