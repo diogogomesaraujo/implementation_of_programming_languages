@@ -3,6 +3,9 @@
 open Secd
 open Execute
 
+type trace_conf = int * int * conf list
+  [@@deriving show]
+
 (** [trace_config c] that constructs a list of the configurations in each step of the execution.
 It also returns the max stack and dump sizes.*)
 let trace_config c =
@@ -22,3 +25,6 @@ let trace_config c =
 (** [trace i] receives an instruction list [i] and calls [trace_config] for an initial configuration.*)
 let trace i =
   trace_config ([], [], i, [], StoreMap.empty)
+
+let pp_trace i =
+  trace i |> show_trace_conf |> print_endline

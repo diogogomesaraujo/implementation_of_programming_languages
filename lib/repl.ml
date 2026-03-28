@@ -3,6 +3,7 @@
 open Run
 open Exn
 open Parse
+open Trace
 open Compile
 open Terminal_size
 
@@ -29,7 +30,7 @@ let read_term () =
   read_term_rec ""
 
 (** [repl_rec ()] interacts with the user and evaluates programs read from the stdin.*)
-let rec repl_rec () =
+let rec repl_rec tf () =
   try
     let e =
       try
@@ -37,16 +38,19 @@ let rec repl_rec () =
       with _ -> raise (Exn (Runtime, "couldn't parse user input"))
     in
 
-    match compile e [] |> run with
+    let prog = compile e [] in
+
+    match prog |> run with
     | Int x ->
-      Printf.printf "< %d\n\n" x; repl_rec ()
+      if tf then pp_trace prog;
+      Printf.printf "< %d\n\n" x; repl_rec tf ()
     | _ -> raise (Exn (Runtime, "couldn't reach an integer value"))
   with Exn (t, e) ->
     print_exn (t, e);
-    repl_rec ()
+    repl_rec tf ()
 
 (** [repl] executes the interactive environment.*)
-let repl () =
+let repl tf () =
   clear ();
   Printf.printf "welcome to fun's repl! type your programs bellow.\n\n";
-  repl_rec ()
+  repl_rec tf ()

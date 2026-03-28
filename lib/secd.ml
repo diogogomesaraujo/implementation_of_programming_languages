@@ -84,13 +84,17 @@ module StoreMap = struct
     let rec show_rec m =
       match m with
       | [] -> ""
+      | (k, v)::[] ->
+        Printf.sprintf "%s: %s"
+          (show_addr k)
+          (show_closure v)
       | (k, v)::tl ->
-        Printf.sprintf "%s, %s: %s"
+        Printf.sprintf "%s: %s, %s"
           (show_addr k)
           (show_closure v)
           (show_rec tl)
     in
-    "{" ^ (List.tl m |> show_rec) ^ "}"
+    "{" ^ (m |> show_rec) ^ "}"
 
     (** [pp fmt m] is the memory store's pretty printer.*)
     let pp fmt m =
