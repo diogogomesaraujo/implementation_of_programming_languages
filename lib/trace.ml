@@ -16,8 +16,8 @@ module Trace = struct
       | c' ->
         let (s, _, _, d, _) = c' in
         trace_rec
-          c
-          (l @ [c'])
+          c'
+          (l @ [c])
           (max (List.length s) s_size)
           (max (List.length d) d_size)
     in
@@ -26,6 +26,4 @@ module Trace = struct
   (** [trace i] receives an instruction list [i] and calls [trace_config] for an initial configuration.*)
   let instr i =
     config ([], [], i, [], StoreMap.empty)
-
-  let print i () = instr i |> show |> print_endline
 end
