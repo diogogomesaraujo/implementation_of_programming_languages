@@ -4,9 +4,6 @@ open Secd
 open Execute
 
 module Trace = struct
-  type t = int * int * conf list
-    [@@deriving show]
-
   (** [trace_config c] that constructs a list of the configurations in each step of the execution.
   It also returns the max stack and dump sizes.*)
   let config c =
