@@ -5,7 +5,7 @@ open Fun.Repl
 open Fun.Run
 open Fun.Exn
 
-let usage_msg = "fun (--repl | <file>)"
+let usage_msg = "fun (--repl | <file>) [--trace]"
 
 let repl_flag = ref false
 let trace_flag = ref false
@@ -16,7 +16,7 @@ let anon_fun filename =
   input_file := filename
 
 let spec_list =
-  [("--repl", Arg.Set repl_flag, "Interactive environment");
+  [("--repl", Arg.Set repl_flag, "Interactive environment.");
     ("--trace", Arg.Set trace_flag, "Traces the intermediate configurations of a program's execution.")]
 
 let () =
