@@ -26,6 +26,8 @@ and term =
   | Different of term * term
   | LessEqual of term * term
   | GreaterEqual of term * term
+  | And of term * term
+  | Or of term * term
   | Equal of term * term
   | Fix of term
   [@@deriving show]

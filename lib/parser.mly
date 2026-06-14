@@ -31,6 +31,8 @@
 %token MATCH
 %token WITH
 %token BAR
+%token AND
+%token OR
 
 %start <Ast.term> prog
 %%
@@ -45,15 +47,20 @@ atomic:
   | LPAR; e = expr; RPAR { e }
   ;
 
-cond:
-  | c1 = sum; LESS; c2 = sum { Less(c1, c2) }
-  | c1 = sum; GREATER; c2 = sum { Greater(c1, c2) }
-  | c1 = sum; EQUAL; c2 = sum { Equal(c1, c2) }
-  | c1 = sum; LESS; EQUAL; c2 = sum { LessEqual(c1, c2) }
-  | c1 = sum; GREATER; EQUAL; c2 = sum { GreaterEqual(c1, c2) }
-  | c1 = sum; DIFF; c2 = sum { Different(c1, c2) }
+_cond:
+  | c1 = sum; LESS; c2 = _cond { Less(c1, c2) }
+  | c1 = sum; GREATER; c2 = _cond { Greater(c1, c2) }
+  | c1 = sum; EQUAL; c2 = _cond { Equal(c1, c2) }
+  | c1 = sum; LESS; EQUAL; c2 = _cond { LessEqual(c1, c2) }
+  | c1 = sum; GREATER; EQUAL; c2 = _cond { GreaterEqual(c1, c2) }
+  | c1 = sum; DIFF; c2 = _cond { Different(c1, c2) }
   | s = sum { s }
   ;
+
+cond:
+  | c1 = _cond; AND; c2 = cond { And(c1, c2) }
+  | c1 = _cond; OR; c2 = cond { Or(c1, c2) }
+  | c = _cond { c }
 
 sum:
   | e1 = sum; SUM; e2 = mul { Addition (e1, e2) }

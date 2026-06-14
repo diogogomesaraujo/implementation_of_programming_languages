@@ -13,6 +13,7 @@ let rec compile_lambda l e sym =
     let c = compile_lambda tl e (x::sym)
     in [LDF (c @ [RTN])]
 
+(** [compile_cases v l sym] compiles the branches of a [match] recursively.*)
 and compile_cases v l sym =
   match l with
     | (t1, t2)::tl ->
@@ -93,6 +94,12 @@ and compile e sym =
     let c2 = (compile e2 sym) @ [JOIN] in
     let c3 = (compile e3 sym) @ [JOIN] in
     compile e1 sym @ [SEL (c2, c3)]
+
+  | And (e1, e2) ->
+    compile e1 sym @ [SEL (compile e2 sym @ [SEL ([LDC 0], [LDC 1])], [LDC 1])]
+
+  | Or (e1, e2) ->
+    compile e1 sym @ [SEL ([LDC 0], compile e2 sym @ [SEL ([LDC 0], [LDC 1])])]
 
   | Match (x, l) ->
     compile_cases (compile x sym) l sym

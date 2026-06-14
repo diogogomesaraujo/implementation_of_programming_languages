@@ -26,5 +26,6 @@ let trace_config c =
 let trace i =
   trace_config ([], [], i, [], StoreMap.empty)
 
+(** [pp_trace i] prints the instruction list [i] trace in the stdout.*)
 let pp_trace i =
   trace i |> show_trace_conf |> print_endline

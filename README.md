@@ -14,7 +14,7 @@ This repository contains a compiler from an extended call-by-value λ-Calculus t
 
 ## Features
 
-- Conditionals (`ifzero then else`, `=`, `<>`, `<`, `>`, `<=`, `>=`);
+- Conditionals (`ifzero then else`, `=`, `<>`, `<`, `>`, `<=`, `>=`, `&&`, `||`);
 - Pattern matching (`match _ with | _ -> _`);
 - Arithmetic expressions (`+`, `-`, `/`, `*`);
 - Lambda Functions (`\x -> _`);

@@ -25,6 +25,8 @@ rule read =
     | ":=" { ASSIGN }
     | "=" { EQUAL }
     | "<>" { DIFF }
+    | "&&" { AND }
+    | "||" { OR }
     | "fix" { FIX }
     | "def" { DEF }
     | "rec" { REC }
